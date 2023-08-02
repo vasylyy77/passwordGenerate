@@ -7,7 +7,7 @@
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-
+from PyRandomPassword.PyRandomPassword import RandomGeneratePassword as RandomPassword
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -115,14 +115,12 @@ class Ui_MainWindow(object):
     # retranslateUi
 
     def create_password(self):
-        alphabet = list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890')
         resurs = self.lineEdit.text()
         number = self.lineEdit_2.text()
         login = self.lineEdit_3.text()
         len_password = int(number)
-        entry_password = []
-        for i in range(int(len_password)):
-            entry_password.insert(0, choice(alphabet))
+        entry_password = RandomPassword(len_password)
+
 
         self.lineEdit_4.setText(f"resurs: {resurs} password: {''.join(entry_password)} login: {login}""")
         return f""" 
